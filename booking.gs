@@ -570,7 +570,7 @@ function doCreateEvent(description, eMail, contactNum, title, startFirstDate, du
 }
 
 function parseFormResponse() {
-  console.log('Calling the Forms API!');
+  Logger.log('Calling the Forms API!');
   var unit = 0;
   var formId = '1ZEj_fJDaQ54DqoePsao2VRAabEvmMfuMOduBPRFwjKY';
   var form = FormApp.openById(formId);
