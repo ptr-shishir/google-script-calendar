@@ -42,10 +42,10 @@ function findConflictOneShot(cal, sd, ed, startTime, endTime) {
     _es = _existingEvents[_i].getStartTime();
     _ee = _existingEvents[_i].getEndTime();
     //Logger.log("comp " + _ee.toLocaleString() + " | " + _endDate.toLocaleString() + " |" + sd.toLocaleDateString() + " " + ed.toLocaleDateString());
-    if ((Math.floor(_startDate.valueOf()/1000) >= Math.floor(_es.valueOf()/1000) &&
-			   Math.floor(_startDate.valueOf()/1000) < Math.floor(_ee.valueOf()/1000)) ||
-		    (Math.floor(_endDate.valueOf()/1000) > Math.floor(_es.valueOf()/1000) &&
-			   Math.floor(_endDate.valueOf()/1000) <= Math.floor(_ee.valueOf()/1000))) {
+    if ((_startDate.valueOf() >= _es.valueOf() &&
+			   _startDate.valueOf() < _ee.valueOf()) ||
+		    (_endDate.valueOf() > _es.valueOf() &&
+			   _endDate.valueOf() <= _ee.valueOf())) {
       Logger.log("New : " + _startDate.toLocaleString() + " | " + _endDate.toLocaleString() + " | "+ " conflicts with existing " + _es.toLocaleString() + " | " + _ee.toLocaleString() + " |")
       return true;
     }
@@ -72,7 +72,7 @@ function findConflictDaily(cal, sd, ed, startTime, endTime, freq) {
     _es = _existingEvents[_i].getStartTime();
     _ee = _existingEvents[_i].getEndTime();
 
-    if (Math.floor(ed.valueOf()/1000) < Math.floor(_es.valueOf()/1000))
+    if (ed.valueOf() < _es.valueOf())
 		  return false;
 
     /* We are sure that the startDates and the events will start in either the same month or the returned events will have a month
@@ -95,10 +95,10 @@ function findConflictDaily(cal, sd, ed, startTime, endTime, freq) {
         }
       }
       //Logger.log("comp " + _ee.toLocaleString() + " | " + _endDate.toLocaleString() + " |")
-      if ((Math.floor(_startDate.valueOf()/1000) >= Math.floor(_es.valueOf()/1000) &&
-			     Math.floor(_startDate.valueOf()/1000) < Math.floor(_ee.valueOf()/1000)) ||
-		      (Math.floor(_endDate.valueOf()/1000) > Math.floor(_es.valueOf()/1000) &&
-			     Math.floor(_endDate.valueOf()/1000) <= Math.floor(_ee.valueOf()/1000))) {
+      if ((_startDate.valueOf() >= _es.valueOf() &&
+			     _startDate.valueOf() < _ee.valueOf()) ||
+		      (_endDate.valueOf() > _es.valueOf() &&
+			     _endDate.valueOf() <= _ee.valueOf())) {
           Logger.log("New : " + _startDate.toLocaleString() + " | " + _endDate.toLocaleString() + " | "+ " conflicts with existing " + _es.toLocaleString() + " | " + _ee.toLocaleString() + " |")
         return true;
       }
@@ -144,7 +144,7 @@ function findConflictWeekly(cal, sd, ed, startTime, endTime, daysOfWeek, startId
     _es = _existingEvents[_i].getStartTime();
     _ee = _existingEvents[_i].getEndTime();
 
-    if (Math.floor(ed.valueOf()/1000) < Math.floor(_es.valueOf()/1000))
+    if (ed.valueOf() < _es.valueOf())
 		  return false;
 
     if (_es.getFullYear() == _startDate.getFullYear()) {
@@ -185,10 +185,10 @@ function findConflictWeekly(cal, sd, ed, startTime, endTime, daysOfWeek, startId
           continue;
         //Logger.log("comp " + _es.toLocaleString() + " | " + _ee.toLocaleString() + " |" + _startDate.toLocaleString() + " | " + _endDate.toLocaleString())
         
-        if ((Math.floor(_startDate.valueOf()/1000) >= Math.floor(_es.valueOf()/1000) &&
-			       Math.floor(_startDate.valueOf()/1000) < Math.floor(_ee.valueOf()/1000)) ||
-		        (Math.floor(_endDate.valueOf()/1000) > Math.floor(_es.valueOf()/1000) &&
-			       Math.floor(_endDate.valueOf()/1000) <= Math.floor(_ee.valueOf()/1000))) {
+        if ((_startDate.valueOf() >= _es.valueOf() &&
+			       _startDate.valueOf() < _ee.valueOf()) ||
+		        (_endDate.valueOf() > _es.valueOf() &&
+			       _endDate.valueOf() <= _ee.valueOf())) {
           Logger.log("New : " + _startDate.toLocaleString() + " | " + _endDate.toLocaleString() + " | "+ " conflicts with existing " + _es.toLocaleString() + " | " + _ee.toLocaleString() + " |")
           
           return true;
@@ -228,7 +228,7 @@ function findConflictMonthly(cal, sd, ed, startTime, endTime, sameDateEveryMonth
   for (var _i = 0; _i < _existingEvents.length; _i++) {
     _es = _existingEvents[_i].getStartTime();
     _ee = _existingEvents[_i].getEndTime();
-    if (Math.floor(ed.valueOf()/1000) < Math.floor(_es.valueOf()/1000))
+    if (ed.valueOf() < _es.valueOf())
 		  return false;
   
     if (_es.getFullYear() == _startDate.getFullYear()) {
@@ -259,10 +259,10 @@ function findConflictMonthly(cal, sd, ed, startTime, endTime, sameDateEveryMonth
       }
   
       //Logger.log("comp " + _ee.toLocaleString() + " | " + _endDate.toLocaleString() + " |")
-      if ((Math.floor(_startDate.valueOf()/1000) >= Math.floor(_es.valueOf()/1000) &&
-           Math.floor(_startDate.valueOf()/1000) < Math.floor(_ee.valueOf()/1000)) ||
-          (Math.floor(_endDate.valueOf()/1000) > Math.floor(_es.valueOf()/1000) &&
-           Math.floor(_endDate.valueOf()/1000) <= Math.floor(_ee.valueOf()/1000))) {
+      if ((_startDate.valueOf() >= _es.valueOf() &&
+           _startDate.valueOf() < _ee.valueOf()) ||
+          (_endDate.valueOf() > _es.valueOf() &&
+           _endDate.valueOf() <= _ee.valueOf())) {
         Logger.log("New : " + _startDate.toLocaleString() + " | " + _endDate.toLocaleString() + " | "+ " conflicts with existing " + _es.toLocaleString() + " | " + _ee.toLocaleString() + " |")
         return true;
       }
