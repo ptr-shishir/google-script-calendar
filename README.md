@@ -10,5 +10,5 @@ occurances can be added and that is something that can easily be increased or de
 in the form.
 
 This script allows only adding and deleting as Google forms are not interactive, and it is very messy to create a workflow
-that allow editing an event. This script also keeps it simple by asking the requester to store the event id generated post
+that allows editing an event. This script also keeps it simple by asking the requester to store the event id generated post
 addition to the calendar for use while deleting the event, if desired.
